@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, :auth, :class_periods, :students, :registrations, :assessments, only: [:create, :index, :show, :filter, :update, :destroy, :destroy_all]
+      root "application#index"
+      
       post '/login',  to: 'auth#create'
       post '/class_periods', to: 'class_periods#create'
       post '/filterCP', to: 'class_periods#filter'
